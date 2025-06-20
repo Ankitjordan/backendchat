@@ -11,11 +11,17 @@ const msgDB = mongoose.createConnection(process.env.MSG_DB, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 });
-authDB.on("error", (err) => {
-  console.error("Error connecting to authDB:", err);
-});
-msgDB.on("error", (err) => {
-  console.error("Error connecting to msgDB:", err);
+authDB.on("connected", () => {
+  console.log("✅ AuthDB connected to MongoDB");
 });
 
+authDB.on("error", (err) => {
+  console.log("❌ AuthDB connection error:", err.message);
+});
+msgDB.on("connected", () => {
+  console.log("✅ MsgDB connected to MongoDB");
+});
+msgDB.on("error", (err) => {
+  console.log("❌ MsgDB connection error:", err.message);
+});
 export { authDB, msgDB };
