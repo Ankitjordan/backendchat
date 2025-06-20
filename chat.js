@@ -11,7 +11,10 @@ const app = express();
 const server = createServer(app);
 const io = new Server(server, {
   cors: {
-    origin: "https://frontend-logic-chatapp.vercel.app/",
+    origin: [
+      "https://frontend-logic-chatapp.vercel.app/",
+      "https://frontend-logic-chatapp-frm1.vercel.app",
+    ],
     methods: ["GET", "POST"], // yeh likhna safe & recommended hai
   },
 });
