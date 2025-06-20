@@ -28,6 +28,11 @@ io.on("connection", (socket) => {
   });
 });
 
+app.get("/", (req, res) => {
+  console.log("✅ Hello from Vercel backend");
+  res.send("Hello World from backend!");
+});
+
 app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
