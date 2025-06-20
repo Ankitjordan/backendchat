@@ -30,8 +30,10 @@ io.on("connection", (socket) => {
 
 app.use(cors());
 app.use(express.json());
-app.use(express.urlencoded());
+app.use(express.urlencoded({ extended: true }));
 app.use("/", router);
 const PORT = process.env.PORT || 3000;
 
-server.listen(PORT);
+server.listen(PORT, () => {
+  console.log(`Server is running on port ${PORT}`);
+});
