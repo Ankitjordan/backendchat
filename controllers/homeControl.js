@@ -4,7 +4,7 @@ import { authModel, msgModel } from "../models/authModel.js";
 // TODO: Use bcrypt to hash password before saving (for future security)
 
 const newRoom = async (req, res) => {
-console.log(user);
+
   if (await authModel.exists({ roomId: req.body.roomId }))
     return res.status(400).json({
       message: "Room already exists try entering a different id ",
