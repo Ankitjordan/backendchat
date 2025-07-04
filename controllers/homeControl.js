@@ -17,6 +17,7 @@ const newRoom = async (req, res) => {
 
   try {
     const rep = await user.save();
+console.log(user);
     if (rep) res.status(200).json({ msg: "Successfully Created Room" });
   } catch (error) {
     console.log(error);
