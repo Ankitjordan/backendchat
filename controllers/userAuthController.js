@@ -24,6 +24,7 @@ const registerReqHandler = async (req, res) => {
         $setOnInsert: {
           username: req.body.username,
           password: req.body.password,
+          country: req.body.country,
         },
       },
       { upsert: true, new: true, runValidators: true }

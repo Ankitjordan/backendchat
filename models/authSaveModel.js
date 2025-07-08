@@ -5,6 +5,7 @@ const temp_userSchema = new mongoose.Schema({
   username: { type: String, required: true, trim: true },
   password: { type: String, required: true, trim: true },
   email: { type: String, required: true, trim: true, unique: true },
+  country: { type: String, required: true, trim: true },
   otp: {
     type: Number,
     match: [/^\d{6}$/, "OTP must be of 6 digit"],
@@ -17,6 +18,7 @@ const userSchema = new mongoose.Schema({
   username: { type: String, required: true, trim: true },
   password: { type: String, required: true, trim: true },
   email: { type: String, required: true, trim: true, unique: true },
+  country: { type: String, required: true, trim: true },
 });
 
 const temp_registeredUsers = authDB.model(
