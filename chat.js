@@ -3,6 +3,7 @@ import { Server } from "socket.io";
 import { createServer } from "node:http";
 import router from "./routes/homeRoute.js";
 import cors from "cors";
+import RegisterRouter from "./routes/userAuthRoute.js";
 /* eslint-disable no-undef */
 import dotenv from "dotenv";
 dotenv.config();
@@ -14,6 +15,7 @@ const io = new Server(server, {
     origin: ["https://frontend-logic-chatapp.vercel.app"],
     methods: ["GET", "POST"], // yeh likhna safe & recommended hai
   },
+  serveClient: false,
 });
 app.use(cors());
 
@@ -37,6 +39,7 @@ app.get("/", (req, res) => {
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use("/", router);
+app.use("/chatJod", RegisterRouter);
 const PORT = process.env.PORT || 3000;
 
 server.listen(PORT, () => {
